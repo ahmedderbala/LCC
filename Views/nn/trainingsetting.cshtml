@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Training Setting";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+@using webproject2.Model;
+@model Dbn
+@section content{
+
+
+   
+
+                @*<ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="instructor-dashboard.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="instructor-quizzes.html">Quiz Manager</a></li>
+                    <li class="breadcrumb-item active">Edit Quiz</li>
+                </ol>*@
+                <h1 class="page-heading h2">Training Setting  </h1>
+
+                <div class="card">
+                    <div class="card-header">
+                       <h4 class="card-title"> DBN: @Model.Dbnname</h4>
+                    </div>
+                    <div class="card-body form-card">
+             @using (Html.BeginForm("trainingsettingadd", "nn", new { id = Model.Id }, FormMethod.Post,null, new { enctype = "multipart/form-data" }))
+             {
+                           <div class="form-group row">
+                                <label for="quiz_title" class="col-sm-3 col-form-label">Learning Rate: from 0 to 1</label>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" id="learningrate" name="learningrate" asp-for="Learningrate" class="form-control" placeholder="Write Learning Rate" />
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="form-group row">
+                                <label for="quiz_title" class="col-sm-3 col-form-label">Num of training Epoch </label>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" id="numoftrainingEpoch" name="numoftrainingEpoch" asp-for="NumoftrainingEpoch" class="form-control" placeholder="Write Learning Rate" />
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="form-group row">
+                                <label for="quiz_title" class="col-sm-3 col-form-label">Dataset Size</label>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" id="datasetsize" name="datasetsize" asp-for="Datasetsize" class="form-control" placeholder="Write Learning Rate" />
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="form-group row">
+                                <label for="quiz_title" class="col-sm-3 col-form-label"> Training Dataset (.txt)</label>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <input type="file" name="datasetfile" id="Q_file">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                           @if(@Model.Trainingset!=null && @Model.Trainingset.Value)
+                                            {
+                                               <label>@Model.Datasetfilename</label> <a href="/nn/DownloadFile?fname=@Model.Datasetfilename"  class="btn btn-primary btn-sm" style="color:#fff !important;">Download</a>
+                                            }
+                                </div>
+                            </div>
+                           
+
+                             <div class="media">
+                                <div class="media-left">
+                                    <input type="submit" id="Save" class="btn btn-success" value="Save" />
+                                </div>
+                            </div>
+                        }
+
+
+                </div>
+                </div>
+
+          
+
+  
+}
+@section footerscript {
+
+
+    
+}

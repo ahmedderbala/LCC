@@ -1,0 +1,49 @@
+int inputsCount=9;
+            int outputsCount=11;
+            int hiddenNeurons=7; 
+            int hiddenLayersCount=2;
+            int datasetsize=102;
+            double LearningRate=0.5;
+            int numoftrainingEpoch=5000;
+            string trainingfilename="datalcc.txt";
+
+
+            1.6378617285881087
+
+            when increses  numoftrainingEpoch 10000
+            1.3690464773244195
+            when increses  numoftrainingEpoch 15000
+            14980, Error = 1.2662398462733189
+
+
+
+working   good 
+ int inputsCount=9;
+            int outputsCount=11;
+            int hiddenNeurons=7; 
+            int hiddenLayersCount=2;
+            int datasetsize=612;
+            double LearningRate=0.5;
+            int numoftrainingEpoch=20000;
+            string trainingfilename="datalcc2.txt";
+
+
+Alexandria
+Aswan
+Asyut
+Beni Suef
+Cairo
+Faiyum
+Giza
+Ismailia
+Luxor
+Minya
+Monufia	
+New Valley
+Qalyubia
+Qena
+Red Sea
+Sharqia
+Sohag
+South
+Suez

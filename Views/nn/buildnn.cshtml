@@ -1,0 +1,123 @@
+﻿@{
+    ViewData["Title"] = "Build Deep Beleif Network";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+@using webproject2.Model;
+@model Dbn
+@section content{
+
+
+   
+
+                @*<ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="instructor-dashboard.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="instructor-quizzes.html">Quiz Manager</a></li>
+                    <li class="breadcrumb-item active">Edit Quiz</li>
+                </ol>*@
+                <h1 class="page-heading h2">Build Deep Beleif Network</h1>
+
+                <div class="card">
+                    <div class="card-header">
+                        @*<h4 class="card-title">Basic</h4>*@
+                    </div>
+                    <div class="card-body  form-card">
+           @using (Html.BeginForm("adddbn", "nn", new { id = Model.Id }, FormMethod.Post,null, new { enctype = "multipart/form-data" }))
+           {
+                           <div class="form-group row">
+                                <label for="quiz_title" class="col-md-3 col-form-label"> NBN Name:</label>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <input type="text" id="dbnname" name="dbnname" asp-for="Dbnname" class="form-control" placeholder="Write  Name" />
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="form-group row">
+                                <label for="course_title" class="col-md-3 col-form-label labelheader">Input layer</label>
+                           </div>
+                           <div class="form-group row">
+                               <label for="course_title" class="col-md-3 col-form-label">Neurons Count</label>
+                              <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="number" id="inputneuronscount" name="inputneuronscount" asp-for="Inputneuronscount" class="form-control" placeholder="Neurons Count" />
+                                    </div>
+                                </div>
+                                @* <label for="course_title" class="col-md-2 col-form-label">Activation Type</label>
+                                <div class="col-md-4">
+                                    <select  id="inputactivationtypeid"  required class="form-control">
+                                         <option>Select Activation Type</option>
+                                         <option value="1" >Sigmoid</option>
+                                         <option value="2" >TanH</option>
+                                    </select>
+                                </div> *@
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="course_title" class="col-md-6 col-form-label labelheader">Restricted Boltzmann Machines ( Hidden Layers) Setting</label>
+                           </div>
+                           <div class="form-group row">
+                                <label for="course_title" class="col-md-3 col-form-label">Restricted Boltzmann machines Count( Layers Count)</label>
+                              <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="number" id="hiddenlayerscount" name="hiddenlayerscount" asp-for="Hiddenlayerscount" class="form-control" placeholder="Layers Count" />
+                                    </div>
+                                </div>
+                                </div>
+
+
+                            <div class="form-group row">
+                               <label for="course_title" class="col-md-3 col-form-label">Neurons Count in each layer</label>
+                              <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="number" id="hiddenneuronscount" name="hiddenneuronscount" asp-for="Hiddenneuronscount" class="form-control" placeholder="Neurons Count" />
+                                    </div>
+                                </div>
+                                @* <label for="course_title" class="col-md-3 col-form-label">Activation Type</label>
+                                <div class="col-md-3">
+                                    <select  id="hiddenactivationtypeid"  required class="form-control">
+                                         <option>Select Activation Type</option>
+                                         <option value="1" >Sigmoid</option>
+                                         <option value="2" >TanH</option>
+                                    </select>
+                                </div> *@
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label for="course_title" class="col-md-6 col-form-label labelheader">Outpu Layer</label>
+                           </div>
+                           <div class="form-group row">
+                               <label for="course_title" class="col-md-3 col-form-label">Neurons Count</label>
+                              <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="number" id="outputneuronscount" name="outputneuronscount" asp-for="Outputneuronscount"  class="form-control" placeholder="Neurons Count" />
+                                    </div>
+                                </div>
+                                @* <label for="course_title" class="col-md-2 col-form-label">Activation Type</label>
+                                <div class="col-md-4">
+                                    <select  id="outputactivationtypeid"  required class="form-control">
+                                         <option>Select Activation Type</option>
+                                         <option value="1" >Sigmoid</option>
+                                         <option value="2" >TanH</option>
+                                    </select>
+                                </div> *@
+                            </div>
+                             <div class="media">
+                                <div class="media-left">
+                                    <input type="submit" id="Save" class="btn btn-success" value="Save" />
+                                </div>
+                            </div>
+           }
+
+
+                </div>
+                </div>
+
+         
+
+  
+}
+@section footerscript {
+
+
+    
+}

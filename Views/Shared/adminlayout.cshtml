@@ -1,0 +1,279 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Welcome to LCC Deep Learning Prediction Model -@ViewBag.title - |@ViewBag.websitename </title>
+    @*Prevent the demo from appearing in search engines (REMOVE THIS)*@
+    <meta name="robots" content="noindex">
+    @*Simplebar*@
+    <link type="text/css" href="~/dashboard/assets/vendor/simplebar.css" rel="stylesheet">
+ 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en" rel="stylesheet">
+    @*MDK*@
+    <link type="text/css" href="~/dashboard/assets/vendor/material-design-kit.css" rel="stylesheet">
+   
+    <link type="text/css" href="~/dashboard/assets/vendor/sidebar-collapse.min.css" rel="stylesheet">
+    @*App CSS*@
+    <link type="text/css" href="~/dashboard/assets/css/style.css" rel="stylesheet">
+    @*Main Styles CSS*@
+    <link type="text/css" href="~/dashboard/assets/css/main-styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/dashboard/assets/css/bootstrap-touchspin.css">
+    <link rel="stylesheet" href="~/dashboard/assets/css/nestable.css">
+    <link href="~/dashboard/assets/js/jqueryui/jquery-ui.css" rel="stylesheet" />
+
+    <link href="~/dashboard/assets/css/Paging.css" rel="stylesheet" />
+
+    <link href="~/dashboard/assets/css/tablednd.css" rel="stylesheet" />
+    <link href="~/dashboard/assets/css/MoreTableDrag.css" rel="stylesheet" />
+
+    <script src="~/dashboard/assets/js/ckeditor/ckeditor.js"></script>
+
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/flatly/bootstrap.min.css">*@
+    <link href="~/dashboard/assets/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/dashboard/assets/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+    <!--<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Instructor - Edit quiz</title>-->
+    <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
+    <!--<meta name="robots" content="noindex">-->
+    <!-- Simplebar -->
+    <!--<link type="text/css" href="~/dashboard/assets/vendor/simplebar.css" rel="stylesheet">-->
+    <!-- Material Design Icons  -->
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <!-- Roboto Web Font -->
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">-->
+    <!-- MDK -->
+    <!--<link type="text/css" href="~/dashboard/assets/vendor/material-design-kit.css" rel="stylesheet">-->
+    <!-- Sidebar Collapse -->
+    <!--<link type="text/css" href="~/dashboard/assets/vendor/sidebar-collapse.min.css" rel="stylesheet">-->
+    <!-- App CSS -->
+    <!--<link type="text/css" href="~/dashboard/assets/css/style.css" rel="stylesheet">-->
+    <!-- Touchspin -->
+    <!--<link rel="stylesheet" href="~/dashboard/assets/css/bootstrap-touchspin.css">-->
+    <!-- Vendor CSS -->
+    <!--<link rel="stylesheet" href="~/dashboard/assets/css/nestable.css">-->
+
+    @RenderSection("headstyle", false)
+
+
+<style>
+     .page-heading {
+        padding: .25rem 0;
+        margin-bottom: 0!important;
+        font-size: 16px;
+        color:#151B54 !important;
+        font-weight: bold !important;
+    }
+   
+      
+</style>
+
+</head>
+
+<body >
+
+    <div class="d-flex flex-column h-100">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand navbar-dark bg-primary m-0">
+
+            <!-- Toggle sidebar -->
+            <button class="navbar-toggler d-block" data-toggle="sidebar" type="button">
+                <span class="material-icons">menu</span>
+            </button>
+
+            <!-- Brand -->
+            <a href="/admin/account" class="navbar-brand">
+                <i class="material-icons">school</i> @ViewBag.websitename
+            </a>
+
+            @*<ul class="nav navbar-nav d-none d-md-flex">
+                    <li class="nav-item">
+                        <div class="nav-stats">SAR 591 <small>الارباح</small></div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-stats">SAR 31 <small>الضريبة</small></div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-stats">SAR 560 <small>الصافى</small></div>
+                    </li>
+                </ul>*@
+
+            <div class="navbar-spacer"></div>
+
+            <!-- Menu -->
+            <ul class="nav navbar-nav d-none d-md-flex">
+                @* <li class="nav-item">
+                        <a class="nav-link" href="/admin/forum">نقاشات</a>
+                    </li> *@
+                @*<li class="nav-item">
+                        <a class="nav-link" href="#">المساعدة</a>
+                    </li>*@
+            </ul>
+
+            <!-- Menu -->
+            <ul class="nav navbar-nav">
+                <!-- User dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="/uploads/user/@ViewBag.ImageName" alt="" class="rounded-circle" width="40"></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        @* <a class="dropdown-item" href="/admin/account">
+                            <i class="material-icons"></i> edit Account
+                        </a> *@
+                        @* <a class="dropdown-item" href="#">
+                                <i class="material-icons"></i> الملف الشخصى
+                            </a> *@
+
+                        @*@if (SignInManager.IsSignedIn(User))
+                            {
+
+
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <button type="submit" class="nav-link btn btn-link text-dark btn-block">تسجيل الخروج</button>
+                                </form>
+                            }*@
+                    </div>
+                </li>
+                <!-- // END User dropdown -->
+            </ul>
+        </nav>
+        <!-- // END Navbar -->
+
+        <div class="mdk-drawer-layout js-mdk-drawer-layout flex" data-fullbleed data-push data-has-scrolling-region>
+           
+           
+          
+
+            <div class="d-flex flex-column h-100">
+        <div class="mdk-drawer-layout__content mdk-drawer-layout__content--scrollable">
+            <div class="container-fluid">
+                 <div class="card">
+                 <div class="card-body welcome-card">
+                    <h1>Welcome to LCC Deep Learning Prediction Model</h1>
+                    <h5>LCC Deep Learning Prediction Model helps you to estimate life cycle cost of construction industrial building in less time using deep belief network that consists of one or more restricted boltzmann machine</h5>
+                 </div>
+                 </div>
+            @RenderSection("content")
+             </div>
+        </div>
+    </div>
+            @RenderSection("sidebar", false)
+
+            <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
+                <div class="mdk-drawer__content ">
+                    <div class="sidebar sidebar-left sidebar-light sidebar-transparent-sm-up o-hidden">
+                        <div class="sidebar-p-y" data-simplebar data-simplebar-force-enabled="true">
+                            <div class="sidebar-heading">Admin panel -@ViewBag.websitename</div>
+                            <ul class="sidebar-menu">
+
+                                <li class="sidebar-menu-item active">
+                                    <a class="sidebar-menu-button" href="/nn/index">
+                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> Main
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="sidebar-heading">Admin</div>
+                            <form id="form1" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="~/Identity/Account/Login">
+                                <ul class="sidebar-menu">
+
+                                   
+                                            <li class="sidebar-menu-item">
+                                                <a class="sidebar-menu-button" href="/nn/Index">
+                                                    <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i>  DBN List
+                                                </a>
+                                            </li>
+                                            <li class="sidebar-menu-item">
+                                                <a class="sidebar-menu-button" href="/nn/predictions">
+                                                    <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i> Predictions Archive
+                                                </a>
+                                            </li>
+                                          
+                                          
+                                </ul>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <!--<script src="~/dashboard/assets/vendor/jquery.min.js"></script>-->
+    <!-- Bootstrap -->
+    <!--<script src="~/dashboard/assets/vendor/popper.min.js"></script>
+    <script src="~/dashboard/assets/vendor/bootstrap.min.js"></script>-->
+    <!-- Simplebar -->
+    <!-- Used for adding a custom scrollbar to the drawer -->
+    <!--<script src="~/dashboard/assets/vendor/simplebar.js"></script>-->
+    <!-- MDK -->
+    <!--<script src="~/dashboard/assets/vendor/dom-factory.js"></script>
+    <script src="~/dashboard/assets/vendor/material-design-kit.js"></script>-->
+    <!-- Sidebar Collapse -->
+    <!--<script src="~/dashboard/assets/vendor/sidebar-collapse.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>-->
+    <!-- App JS -->
+    <!--<script src="~/dashboard/assets/js/main.js"></script>-->
+
+
+    <script src="~/dashboard/assets/vendor/jquery.min.js"></script>
+
+    <script src="~/dashboard/assets/js/jqueryui/jquery-ui.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/dashboard/assets/vendor/popper.min.js"></script>
+    <script src="~/dashboard/assets/vendor/bootstrap.min.js"></script>
+
+    <!-- Simplebar -->
+    <!-- Used for adding a custom scrollbar to the drawer -->
+    <script src="~/dashboard/assets/vendor/simplebar.js"></script>
+
+    <!-- MDK -->
+    <script src="~/dashboard/assets/vendor/dom-factory.js"></script>
+    <script src="~/dashboard/assets/vendor/material-design-kit.js"></script>
+
+    <!-- Sidebar Collapse -->
+    <script src="~/dashboard/assets/vendor/sidebar-collapse.js"></script>
+
+    <!-- App JS -->
+    <script src="~/dashboard/assets/js/main.js"></script>
+
+
+    <!-- Vendor JS -->
+    <script src="~/dashboard/assets/vendor/jquery.nestable.js"></script>
+    <script src="assets/vendor/jquery.bootstrap-touchspin.js"></script>
+
+
+
+    <!-- Initialize -->
+    <script src="~/dashboard/assets/js/nestable.js"></script>
+    <script src="~/dashboard/assets/js/touchspin.js"></script>
+
+    <script src="~/dashboard/assets/js/delete.js"></script>
+    <script src="~/dashboard/assets/js/Paging.js"></script>
+    <script src="~/dashboard/assets/js/jquery.tablednd.0.7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment-hijri@2.1.2/moment-hijri.min.js"></script>
+    <script src="~/dashboard/assets/js/bootstrap-hijri-datepicker.js"></script>
+
+    @RenderSection("footerscript", false)
+</script>
+</body>
+
+</html>

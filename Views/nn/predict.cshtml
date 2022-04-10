@@ -1,0 +1,376 @@
+﻿@{
+    ViewData["Title"] = "Predict Using Deep Beleif Network ";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+@using webproject2.Model;
+@model Prediction
+@section headstyle{
+    <style>
+       
+    </style>
+
+}
+@section content{
+
+
+   
+
+                @*<ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="instructor-dashboard.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="instructor-quizzes.html">Quiz Manager</a></li>
+                    <li class="breadcrumb-item active">Edit Quiz</li>
+                </ol>*@
+                <h1 class="page-heading h2">Predict Using Deep Beleif Network </h1>
+
+                <div class="card">
+                    <div class="card-header">
+                        @*<h4 class="card-title">Basic</h4>*@
+                    </div>
+                    <div class="card-body form-card">
+                        <form action="#"  >
+                            <input type="hidden" id="hdnid" asp-for="Id"  />
+                             <div class="form-group row">
+                               <label for="quiz_title" class="col-md-2 col-form-label"><ul><li class="">Project Name:</li></ul></label>
+                                 <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" id="projectname" name="projectname" asp-for="Projectname" class="form-control" placeholder="Write Project Name" />
+                                    </div>
+                              </div>
+                            
+                               <label for="course_title" class="col-md-2 col-form-label"><ul><li class="">City:</li></ul>  </label>
+                              <div class="col-md-4">
+                                    <div class="input-group">
+                                        <select  name="city" id="city" asp-for="City" required class="form-control">
+                                              <option value="1">Alexandria</option> 
+                                              <option value="2">Aswan</option> 
+                                              <option value="3">Asyut</option> 
+                                              <option value="4">Beni Suef</option> 
+                                              <option value="5">Cairo</option> 
+                                              <option value="6">Faiyum</option> 
+                                              <option value="7">Giza</option> 
+                                              <option value="8">Ismailia</option> 
+                                              <option value="9">Luxor</option> 
+                                              <option value="10">Minya</option> 
+                                              <option value="11">Monufia</option> 
+                                              <option value="12">New Valley</option> 
+                                              <option value="13">Qalyubia</option> 
+                                              <option value="14">Qena</option> 
+                                              <option value="15">Red Sea</option> 
+                                              <option value="16">Sharqia</option> 
+                                              <option value="17">Sohag</option> 
+                                              <option value="18">Matrouh</option> 
+                                              <option value="19">Suez</option>
+                                              <option value="20">Behaira</option>
+                                              <option value="21">Port Said</option>
+                                              <option value="22">Dakahlia</option>
+                                              <option value="23">Demiatt</option>
+                                              <option value="25">Gharbiah</option>
+                                              <option value="26">Kafr El Sheikh</option>
+                                              <option value="27">South of Sinaa</option> 
+                                              <option value="28">North Sinai</option> 
+                                              
+                                              	
+                                                  
+                                         </select>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="course_title" class="col-md-2 col-form-label"><ul><li class="">Select DBN:</li></ul></label>
+                                <div class="col-md-4">
+                                    <select  id="dbnid" name="dbnid" asp-for="Dbnid" required class="form-control">
+                                         <option>Select DBN</option>
+                                         @foreach (var item in ViewBag.listdbn)
+                                         { 
+                                             <option value="@item.Id" >@item.Dbnname</option>
+                                         }
+                                         </select>
+                                </div>
+                               <label for="course_title" class="col-md-2 col-form-label"><ul><li class="">Building Area:</li></ul> </label>
+                              <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="number" name="buildingarea" id="buildingarea" asp-for="Buildingarea" class="form-control" placeholder="min 2000:max 40000 m2" /> 
+                                    </div>
+                               </div>
+                                
+                            </div>
+                          
+                           
+                           
+                            <div class="form-group row">
+                               <label for="course_title" class="col-md-2 col-form-label"><ul><li class="">Floor Height:</li></ul> </label>
+                              <div class="col-md-4">
+                                    <div class="input-group">
+                                         <select  name="floorheight" id="floorheight" asp-for="Floorheight" required class="form-control">
+                                         <option value="3.00">3 meter</option> 
+                                         <option value="4.00">4 meter</option>
+                                         <option value="5.00">5 meter</option> 
+                                         <option value="6.00">6 meter</option>
+                                         <option value="7.00">7 meter</option> 
+                                         <option value="8.00">8 meter</option> 
+                                         </select>
+                                        @* <input type="number" name="floorheight" id="floorheight"  asp-for="Floorheight" class="form-control" placeholder="Floor Height" /> *@
+                                    </div>
+                                </div>
+                               <label for="course_title" class="col-md-2 col-form-label"><ul><li class="">No. Of. Floores:</li></ul> </label>
+                              <div class="col-md-4">
+                                    <div class="input-group">
+                                        <select  name="nooffloores" id="nooffloores" asp-for="Nooffloores" required class="form-control">
+                                         <option value="1">1</option> 
+                                         <option value="2">2</option>
+                                         <option value="3">3</option> 
+                                         <option value="4">4</option>
+                                         <option value="5">5</option> 
+                                         </select>
+                                        @* <input type="number" name="nooffloores" id="nooffloores" asp-for="Nooffloores" class="form-control" placeholder="no. of. floores" /> *@
+                                    </div>
+                                </div>
+
+                                 
+                            </div>
+                             <div class="form-group row">
+                                  <label for="course_title" class="col-md-2 col-form-label"><ul><li class="">Structure/Envelope Type:</li></ul> </label>
+                              <div class="col-md-4">
+                                    <div class="input-group">
+                                        <select  name="envelopetype" id="envelopetype" asp-for="Envelopetype" required class="form-control">
+                                         <option value="1">Precast con/Precast wall</option> 
+                                         <option value="2">Reinforced con/ Masonry wall</option>
+                                         <option value="3">Steel frame/Masonry wall</option> 
+                                         </select>
+                                        @* <input type="number"  class="form-control" placeholder="envelope type" /> *@
+                                    </div>
+                                </div>
+                                  <label for="course_title" class="col-md-2 col-form-label"><ul><li class="">Year Of Built:</li></ul> </label>
+                               <div class="col-md-4">
+                                    <div class="input-group">
+                                         @* <select  name="yearofbuilt" id="yearofbuilt" asp-for="Yearofbuilt" required class="form-control">
+                                         <option value="2015">2015</option> 
+                                         <option value="2016">2016</option>
+                                         <option value="2017">2017</option> 
+                                         <option value="2018">2018</option> 
+                                         <option value="2019">2019</option>
+                                         <option value="2020">2020</option> 
+                                         <option value="2021">2021</option> 
+                                         </select> *@
+                                     <input type="number" name="yearofbuilt" id="yearofbuilt" asp-for="Yearofbuilt" class="form-control" placeholder="ex: 2021" /> 
+                                    </div>
+                                </div>
+                               <label for="course_title" class="col-md-2 col-form-label"><ul><li class="">Building Age:</li></ul> </label>
+                              <div class="col-md-4">
+                                    <div class="input-group">
+                                         <select  name="buildingage" id="buildingage" asp-for="Buildingage" required class="form-control">
+                                         <option value="15.00">15 years</option> 
+                                         <option value="20.00">20 years</option> 
+                                         <option value="25.00">25 years</option>
+                                         <option value="30.00">30 years</option> 
+                                         <option value="35.00">35 years</option> 
+                                         <option value="40.00">40 years</option> 
+                                         <option value="45.00">45 years</option>
+                                         <option value="50.00">50 years</option>  
+                                         </select>
+                                        @* <input type="number" name="buildingage" id="buildingage" asp-for="Buildingage" class="form-control" placeholder="building age" /> *@
+                                    </div>
+                                </div>
+                            
+                               @* <label for="course_title" class="col-md-2 col-form-label"> optinal input2</label>
+                              <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="number"name="optinalinput2" id="optinalinput2" class="form-control" placeholder="optinal input2" />
+                                    </div>
+                                </div> *@
+                                
+                            </div>
+                              @* <div class="form-group row">
+                               <label for="course_title" class="col-md-2 col-form-label"> optinal input3</label>
+                              <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="number" name="optinalinput3" id="optinalinput3" class="form-control" placeholder="optinal input3" />
+                                    </div>
+                                </div>
+                            
+                               <label for="course_title" class="col-md-2 col-form-label"> optinal input4</label>
+                              <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="number"name="optinalinput4" id="optinalinput4" class="form-control" placeholder="optinal input4" />
+                                    </div>
+                                </div>
+                                
+                            </div> *@
+                             
+                                 @if(@Model.Id==0){
+                                    <div class="media">
+                                    <div class="media-left">
+                                    <input type="button" id="predictone" class="btn btn-success" value="Predict" />
+                                    </div>
+                                    </div>
+                                 }
+                             
+                           
+                             @* @if(@Model.Id==0){
+                             <div class="form-group row">
+                            <div class="media">
+                                <div class="media-left">
+                                    <input type="button" id="predictusingtrainingdata" class="btn btn-success" value="predict using training data" />
+                                </div>
+                            </div>
+                            </div>
+                             } *@
+                            @* <div class="form-group row">
+                                <label for="course_title" class="col-md-2 col-form-label" > error ratio:</label>
+                                @if(@Model.Id>0)
+                                 {
+                                   
+                                 }
+                                 else
+                                 {
+                                   <label for="course_title" class="col-md-2 col-form-label" id="correct"> </label>
+                                 }
+                                
+                            
+                            </div> *@
+                        </form>
+
+
+                </div>
+                <div class="card-body">
+                        <form action="#"  >
+                            
+                             <div class="form-group row">
+                                <label for="course_title" class="col-md-12 col-form-label TopHeaderlabel" > Output:</label>
+                               <div class="col-md-12 loadercenter"><div class="loader" id="loader"></div></div> 
+                                 @if(@Model.Id>0)
+                                 {
+                                     <div class="row">
+                                         <div class="col-md-6">
+                                         <div class="row">
+                                         <label for="course_title" class="col-md-12  Headerlabel">Initial Cost: </label>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">Total:</span> @Model.Initialcost <span class="currency">LE</span></div>
+                                        <label for="course_title" class="col-md-12  Headerlabel">Operating And Maintenance: </label>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">Energy Cost:</span> @Model.Energycost <span class="currency">LE</span></div>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">Catering And Services:</span> @Model.Cateringandservices  <span class="currency">LE</span></div>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">Cleaning:</span> @Model.Cleaning <span class="currency">LE</span></div>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">Major Repairs:</span> @Model.Majorrepairs <span class="currency">LE</span></div>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">Periodic Maintenace:</span> @Model.PeriodicMaintena <span class="currency">LE</span></div>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">Rentand Insurances:</span> @Model.RentandInsurances <span class="currency">LE</span></div>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">Total:</span> @Model.OperatingandMaintenance <span class="currency">LE</span></div>
+
+                                         </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                       <div class="row">
+                                        <label for="course_title" class="col-md-12  Headerlabel">Environmental Cost: </label>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">Structure And Envelopematerial:</span> @Model.Structureandenvelopematerial <span class="currency">LE</span></div>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">Marketprice Of Resulted CO2:</span> @Model.MarketpriceofresultedCo2 <span class="currency">LE</span></div>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">Total:</span> @Model.Environmentalcost <span class="currency">LE</span></div>
+                                        <label for="course_title" class="col-md-12  Headerlabel">End Of Life Cost: </label>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">Salvage Value:</span> @Model.Salvagevalue <span class="currency">LE</span></div>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">Demolition Cost:</span> @Model.Demolitioncost <span class="currency">LE</span></div>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">End of life Cost:</span> @Model.Endoflifecost <span class="currency">LE</span></div>
+                                        <label for="course_title" class="col-md-12  Headerlabel"> TotaL Life Cycle Cost: </label>
+                                        <div class="col-md-12 rowdetailoutput"> <span class="outp">Total LCC Cost:</span> @Model.Totallcccost <span class="currency">LE</span></div>
+                                        <div class="col-md-12 rowdetailoutput">  <span class="outp">Error Ratio:</span> @Model.Errorratio %</div>
+                                             
+                                         </div>
+                                         </div>
+                                     </div>
+                                        
+                                       
+                                 }
+                                 else
+                                 {
+                                   <label for="course_title" class="col-md-10 col-form-label" id="output"> </label>
+                                 }
+                                
+                                @* <label for="course_title" class="col-md-2 col-form-label" > maintainance cost:</label>
+                                <label for="course_title" class="col-md-2 col-form-label" id="maintainancecost"> </label> *@
+                            </div>
+                            
+                             </form>
+                     
+                
+                
+                
+                
+                
+                
+               
+               
+               
+                </div>
+                </div>
+
+           
+
+  
+}
+@section footerscript {
+
+<script>
+    $("#predictone").on('click', function () {
+                var id = $("#hdnid").val(); 
+                var dbnid = $("#dbnid").val(); 
+                var projectname = $("#projectname").val(); 
+                var buildingarea = $("#buildingarea").val();
+                var floorheight = $("#floorheight").val();
+                var nooffloores = $("#nooffloores").val();
+                var envelopetype = $("#envelopetype").val();
+               // var structuretype = $("#structuretype").val();
+                //var sustainablegrad = $("#sustainablegrad").val();
+                var city = $("#city").val();
+                var yearofbuilt = $("#yearofbuilt").val();
+                var buildingage = $("#buildingage").val(); 
+                $("#loader").css("display","block");                 
+                $.ajax({
+                    url: "/nn/predictone/",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        id:id,
+                        dbnid:dbnid,
+                        projectname:projectname,
+                        buildingarea: buildingarea,                       
+                        floorheight: floorheight,
+                        nooffloores: nooffloores,
+                        envelopetype: envelopetype,
+                        //structuretype: structuretype,
+                        //sustainablegrad: sustainablegrad,
+                        city: city,
+                        yearofbuilt: yearofbuilt,
+                        buildingage: buildingage,
+                    },
+                    success: function (result) {
+                       @* $("#operationlcost").html(result[0] ); *@
+                       //window.rel
+                       @* $.each(result, function(k, value){
+                        $("#output").append("<span class='outp'>"+k + "</span>: " + value + '<br>');
+                       }); *@
+                       $("#loader").css("display","none");
+                       location.href ='/nn/predict/'+result;
+                    },
+                    error: function () {
+                    }
+                });
+            })
+
+              $("#predictusingtrainingdata").on('click', function () { 
+                  var dbnsettingid = $("#dbnsettingid").val();
+                  
+                  $.ajax({
+                    url: "/nn/predictusingtrainingdata/",
+                    type: "POST",
+                    dataType: "json",
+                    data: { 
+                        dbnsettingid:dbnsettingid,
+                    },
+                    success: function (result) {
+                        $("#correct").html(result+'%');
+                    },
+                    error: function () {
+                    }
+                });
+            })
+</script>
+    
+}
